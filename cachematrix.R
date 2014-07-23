@@ -1,8 +1,16 @@
-## Put comments here that give an overall description of what your
-## functions do
+# ---------------------------------------------------------------------------- #
+#   makeCacheMatrix: This function creates a special "matrix" object that can 
+#    cache its inverse.
+#   cacheSolve: This function computes the inverse of the special "matrix" 
+#    returned by makeCacheMatrix above. If the inverse has already been 
+#    calculated (and the matrix has not changed), then the cachesolve should 
+#    retrieve the inverse from the cache.
+# ---------------------------------------------------------------------------- #
 
-## Write a short comment describing this function
-
+# ---------------------------------------------------------------------------- #
+#   makeCacheMatrix: This function creates a special "matrix" object that can 
+#    cache its inverse.
+# ---------------------------------------------------------------------------- #
 makeCacheMatrix <- function(x = matrix()) {
   matrix <- NULL
   set <- function(y) {
@@ -18,12 +26,14 @@ makeCacheMatrix <- function(x = matrix()) {
 
 }
 
-
-## Write a short comment describing this function
-
+# ---------------------------------------------------------------------------- #
+#   cacheSolve: This function computes the inverse of the special "matrix" 
+#    returned by makeCacheMatrix above. If the inverse has already been 
+#    calculated (and the matrix has not changed), then the cachesolve should 
+#    retrieve the inverse from the cache.
+# ---------------------------------------------------------------------------- #
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-  matrix <- x$getmatrix()
+   matrix <- x$getmatrix()
   if(!is.null(matrix)) {
     message("getting cached data")
     return(matrix)
@@ -34,7 +44,10 @@ cacheSolve <- function(x, ...) {
   matrix
 }
 
-# Invert matrix using solve function
+# ---------------------------------------------------------------------------- #
+#   InvertMatrix: This function computes the inverse of the matrix using
+#    solve function.
+# ---------------------------------------------------------------------------- #
 InvertMatrix <- function(x) {
   n_col <- ncol(x)
   n_row <- nrow(x)
@@ -47,6 +60,7 @@ InvertMatrix <- function(x) {
   for(i in 1:n_row) {
     matrix_I[i,i] = 1
   }
+  # solve this : x*m = matrix_I
   m <- solve(x,matrix_I)
   return(m)
 }
